@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
+import UserCard from './components/UserCard/UserCard';
+import UserSearchBar from './components/UserSearchBar/UserSearchBar';
+
 
 class App extends Component {
+  state = {
+    userDetails: null
+  }
+
+  getUser(username) {
+    return axios.get(`https://api.github.com/users/${username}`)
+      .then(response => response.data)
+      .then(response => {
+        console.log(response)
+        return response;
+      })
+  }
+  async handleSubmit(e) {
+    e.preventDefault();
+    this.setState({userDetails:null})
+    let userDetails = await this.getUser(e.target.username.value);
+    this.setState({
+      userDetails: userDetails
+    })
+
+  }
   render() {
+    
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <UserSearchBar submitHandler={e => this.handleSubmit(e)}/>
+        {this.state.userDetails && <UserCard {...this.state.userDetails}/>}
       </div>
     );
   }

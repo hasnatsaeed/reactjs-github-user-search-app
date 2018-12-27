@@ -1,0 +1,80 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,700,600);
+.card{
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    width:400px;
+    background-color: #fff;
+    padding:20px;
+    margin: 10px auto;
+    box-shadow: 8px 10px 20px 5px dimgrey;
+    border-radius: 15px
+
+}
+.avatar{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.avatar img{
+    width: 7.25rem;
+    height: 7.25rem;
+    border-radius: 50%;
+    display: block;
+    box-shadow: 0 0 0.0625rem rgba(0, 0, 0, 0.5);
+    border-style: none;
+}
+.username{
+    margin-bottom: 0px;
+}
+.username a{
+    color:#2368bd;
+    font-size: 1.65rem;
+    display: inline-block;
+    text-decoration: none;
+    margin: 0px;
+}
+.location{
+    color:#bdcbce;
+    font-size: 1.1885rem;
+    margin-top:0px;
+    margin-bottom: 10px;
+}
+.details{
+    background: #1a4e8e;
+    text-align: center;
+    padding: 1.875rem .9375rem;
+    border-radius: 0 0 .3125rem .3125rem;
+    border-radius: 15px
+}
+
+.details ul{
+    direction: ltr;
+
+}
+
+.details ul li{
+    list-style: none;
+    display: inline-block;
+    margin-right: 2.0rem;
+}
+
+.details ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+.details ul li a i{
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: normal;
+    display: block;
+}
+
+.detail a span{
+    font-size: .900rem;
+    letter-spacing: .0625rem;
+    color: #eee;
+}
