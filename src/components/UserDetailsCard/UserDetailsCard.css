@@ -1,23 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,700,600);
-.card{
+.details-card{
     font-family: "Titillium Web", sans-serif;
     font-weight: 400;
     text-align: center;
-    width:300px;
-    background-color: ghostwhite;
+    width:400px;
+    background-color: #fff;
     padding:20px;
-    margin: 10px 10px;
+    margin: 10px auto;
     box-shadow: 8px 10px 20px 5px dimgrey;
     border-radius: 15px;
-    display: inline-block;
+    
 
 }
-.avatar{
+.details-card .avatar{
     text-align: center;
     text-decoration: none;
     display: inline-block;
 }
-.avatar img{
+.details-card .avatar img{
     width: 7.25rem;
     height: 7.25rem;
     border-radius: 50%;
@@ -25,23 +25,23 @@
     box-shadow: 0 0 0.0625rem rgba(0, 0, 0, 0.5);
     border-style: none;
 }
-.username{
+.details-card .username{
     margin-bottom: 0px;
 }
-.username a{
+.details-card .username a{
     color:#2368bd;
     font-size: 1.65rem;
     display: inline-block;
     text-decoration: none;
     margin: 0px;
 }
-.location{
+.details-card .location{
     color:#bdcbce;
     font-size: 1.1885rem;
     margin-top:0px;
     margin-bottom: 10px;
 }
-.details{
+.details-card .details{
     background: #1a4e8e;
     text-align: center;
     padding: 1.875rem .9375rem;
@@ -49,33 +49,60 @@
     border-radius: 15px
 }
 
-.details ul{
+.details-card .details ul{
     direction: ltr;
 
 }
 
-.details ul li{
+.details-card .details ul li{
     list-style: none;
     display: inline-block;
     margin-right: 2.0rem;
 }
 
-.details ul li a {
+.details-card .details ul li a {
     color: #fff;
     text-decoration: none;
     display: inline-block;
 
 }
 
-.details ul li a i{
+.details-card .details ul li a i{
     font-size: 1.5rem;
     font-weight: 700;
     font-style: normal;
     display: block;
 }
 
-.detail a span{
+.details-card .detail a span{
     font-size: .900rem;
     letter-spacing: .0625rem;
     color: #eee;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .modal-main {
+    position:fixed;
+    background: white;
+    width: 80%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }

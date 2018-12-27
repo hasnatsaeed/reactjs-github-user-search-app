@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import UserCard from './components/UserCard/UserCard';
 import UserSearchBar from './components/UserSearchBar/UserSearchBar';
-
+import UserCardList from './containers/UserCardList/UserCardList';
+import UserDetailsCard from './components/UserDetailsCard/UserDetailsCard';
 
 class App extends Component {
   state = {
-    userDetails: null
+    showUserDetailsModel: false,
+    users: null,
+    user: null
   }
 
   getUser(username) {
@@ -18,22 +20,43 @@ class App extends Component {
         return response;
       })
   }
-  async handleSubmit(e) {
-    e.preventDefault();
-    this.setState({userDetails:null})
-    let userDetails = await this.getUser(e.target.username.value);
-    this.setState({
-      userDetails: userDetails
-    })
 
+  searchUsers(search) {
+    return axios.get(`https://api.github.com/search/users?q=${search}`)
+      .then(response => response.data.items)
+      .then(response => {
+        console.log(response)
+        return response;
+      })
+  }
+  showUserDetailsModel(user) {
+    this.setState({ showUserDetailsModel: true, user: user });
+  }
+
+  closeUserDetailsModel = () => {
+    this.setState({ showUserDetailsModel: false });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.setState({ users: null })
+    this.searchUsers(e.target.username.value).then(users => {
+      this.setState({
+        users: users
+      })
+    });
+  }
+
+  userCardClickHandler = (username) => {
+    this.getUser(username).then(user => {
+      this.showUserDetailsModel(user);
+    });
   }
   render() {
-    
-
     return (
       <div className="App">
-        <UserSearchBar submitHandler={e => this.handleSubmit(e)}/>
-        {this.state.userDetails && <UserCard {...this.state.userDetails}/>}
+        <UserDetailsCard {...this.state.user} show={this.state.showUserDetailsModel} closeHandler={this.closeUserDetailsModel} />
+        <UserSearchBar submitHandler={e => this.handleSubmit(e)} />
+        {this.state.users && <UserCardList users={this.state.users} userCardClickHandler={this.userCardClickHandler} />}
       </div>
     );
   }
